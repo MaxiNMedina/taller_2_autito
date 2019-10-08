@@ -1,0 +1,5 @@
+{
+    "port": "/dev/cu.usbmodem14401",
+    "board": "arduino:avr:uno",
+    "sketch": "Arduino/esp8266_prueba_serie/esp8266_prueba_serie.ino"
+}

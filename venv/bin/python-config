@@ -1,4 +1,4 @@
-#!/Users/maximedina/Desktop/Servidor/venv/bin/python
+#!/Users/maximedina/Documents/Git/taller_2_autito/venv/bin/python
 
 import sys
 import getopt
