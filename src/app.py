@@ -1,25 +1,67 @@
-from flask import Flask, render_template
-from flask import request
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_bootstrap import Bootstrap
 import requests
-from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL, MySQLdb
 
 app = Flask(__name__)
 Bootstrap(app)
+mysql = MySQL(app)
 
-'''app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'maximedina'
-app.config['MYSQL_PASSWORD'] = 'maximedina'
+app.config['MYSQL_HOST'] = '127.0.0.1'
+app.config['MYSQL_PORT'] = 3306
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_DB'] = 'autito'
-mysql = MySQL(app)'''
+app.config['MYSQL_DB_UNIX_SOCKET'] = '/Applications/MAMP/tmp/mysql/mysql.sock'
+
 
 @app.route('/', methods= ['GET', 'POST'])
 def index():
-    '''cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM usuarios')
-    data = cur.fetchall()
-    print(data)'''
     return render_template('index.html') 
+
+@app.route('/login',methods=["GET","POST"])
+def login():
+    if request.method == 'POST':
+        name = request.form['name']
+        password = request.form['password']
+
+        curl = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        curl.execute("SELECT * FROM user WHERE name=%s",(name,))
+        user = curl.fetchone()
+        curl.close()
+
+        if len(user) > 0:
+            if password == user["password"]:
+                session['name'] = user['name']
+                return render_template("index.html")
+            else:
+                return "Error password and email not match"
+        else:
+            return "Error user not found"
+    else:
+        return render_template("login.html")
+
+
+@app.route('/register', methods=["GET", "POST"])
+def register():
+    if request.method == 'GET':
+        return render_template("register.html")
+    else:
+        name = request.form['name']
+        password = request.form['password']
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO user (name, password) VALUES (%s, %s)",(name,password))
+        mysql.connection.commit()
+        session['name'] = request.form['name']
+        return redirect(url_for('index'))
+
+
+@app.route('/logout', methods=["GET", "POST"])
+def logout():
+    session.clear()
+    return render_template("index.html")
+
 
 @app.route('/adelante')
 def adelante():
@@ -46,10 +88,6 @@ def parar():
     requests.get('http://192.168.4.1/5')
     return render_template('index.html') 
 
-@app.route('/velocidad')
-def action_form(vel=None):
-	nom = requests.args["http://192.168.4.1/6"]
-	return render_template('velocidad.html', velocidad=vel)
-
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=4000, debug=True)
+    app.secret_key = "^A%DJAJU^JJ123"
+    app.run(host='0.0.0.0', port=7000, debug=True)

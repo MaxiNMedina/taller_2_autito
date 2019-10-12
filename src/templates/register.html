@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <title>AutoRobot360</title>
+    <meta name="description" content="Xlight Bootstrap Responsive HTML5/CSS3 Template">
+    <meta name="author" content="Andsolutions.it">
+    <meta name="description" content="">
+	
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/static/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/static/css/animate.min.css" rel="stylesheet" >	
+	<link href="/static/css/font-awesome.min.css" rel="stylesheet">	
+	<link href="/static/css/prettyPhoto.css" rel="stylesheet">
+	
+	<link href="/static/css/theme.css" rel="stylesheet">	
+	<link href="/static/css/responsive.css" rel="stylesheet">
+	<link href="/static/css/colors/blue.css" rel="stylesheet" class="colors">
+
+
+	<!-- Google Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    
+	<!-- Favicons -->
+    <link rel="shortcut icon" href="/static/images/ico/favicon.ico">	
+    <link rel="apple-touch-icon" href="/static/images/ico/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/images/ico/apple-touch-icon-72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/images/ico/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/images/ico/apple-touch-icon-144.png">
+
+
+
+    <div class="container">
+        <!-- Titulo de arriba -->
+        <div class="container text-center login">
+            <h1 class="parTitle"><strong>Registrarse</strong></h2>
+        </div>
+        <br>
+
+        {% if error %}
+            <div class="row justify-content-md-center">
+                <div class="col-md-12 col-xs-12">
+                    <div class="alert alert-danger">{{ error }}</div>
+                </div>
+            </div>
+            <br>
+        {% endif %}
+
+        <form action="/register" method="POST">
+            <div class="row">
+
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="username" name="name" aria-describedby="usernameHelp" placeholder="Ingrese su nombre de usuario" required/>                
+                        <small id="nombreHelp" class="form-text text-muted">Aquí debe ingresar su nombre de usuario.</small>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                        <label for="nombre">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Ingrese su contraseña" required/>                
+                        <small id="apellidoHelp" class="form-text text-muted">Aquí debe ingresar su contraseña.</small>
+                    </div>
+                </div>
+            </div>                
+            <br>       
+            <div class="row justify-content-md-center">  
+                <div class="col-md-2 col-md-offset-5 col-xs-12"> 
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-dark btn-lg"">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <br>
+    <br>
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/retina.min.js"></script>
+	<script src="/static/js/jquery.easing.min.js"></script>
+	<script src="/static/js/wow.min.js"></script>	
+	<script src="/static/js/waypoints.min.js"></script>	
+	<script src="/static/js/jquery.countTo.js"></script>
+	<script src="/static/js/jquery.mixitup.min.js"></script>
+	<script src="/static/js/jquery.prettyPhoto.js"></script>	
+	<script src="/static/js/jquery.knob.min.js"></script>	
+	<script src="/static/js/jquery.validate.min.js"></script>
+	<script src="/static/js/custom.js"></script>
+  
+
+</body>
+</html>
