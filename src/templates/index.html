@@ -30,6 +30,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/static/images/ico/apple-touch-icon-144.png">
 
 </head>
+{% if not session['name'] %}
 <body data-spy="scroll" data-target="#mynav" data-offset="85">
 <!-- Preloader --> 
 <div id="preloader">
@@ -44,7 +45,7 @@
 	</div>
 </div>
 <!-- End Preloader -->
-
+{% endif %}
 <header>
 
 <!-- Bootstrap Menu -->
