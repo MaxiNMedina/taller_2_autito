@@ -48,10 +48,11 @@ def register():
         return render_template("register.html")
     else:
         name = request.form['name']
+        dni = request.form['dni']
         password = request.form['password']
 
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO user (name, password) VALUES (%s, %s)",(name,password))
+        cur.execute("INSERT INTO user (name, dni, password) VALUES (%s, %s, %s)",(name,dni,password))
         mysql.connection.commit()
         session['name'] = request.form['name']
         return redirect(url_for('index'))
