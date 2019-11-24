@@ -15,6 +15,8 @@ void setup(){
   server.on("/3", izquierda);
   server.on("/4", derecha);
   server.on("/5", parar);
+  server.on("/6", lento);
+  server.on("/7", rapido);
   server.begin();
 }
 
@@ -44,36 +46,50 @@ void handleRoot(){
 }
 
 void adelante() {
-  Serial.write("Adelante"); 
+  Serial.write(1); 
   //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
   server.sendHeader("Location", String("/"), true);
   server.send ( 302, "text/plain", "");
 }
 
 void atras() {
-  Serial.write("Atras"); 
+  Serial.write(2); 
   //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
   server.sendHeader("Location", String("/"), true);
   server.send ( 302, "text/plain", "");
 }
 
 void izquierda() {
-  Serial.write("Izquierda");
+  Serial.write(3);
    //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
   server.sendHeader("Location", String("/"), true);
   server.send ( 302, "text/plain", "");
 }
 
 void derecha() {
-  Serial.write("Derecha");
+  Serial.write(4);
    //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
   server.sendHeader("Location", String("/"), true);
   server.send ( 302, "text/plain", "");
 }
 
 void parar() {
-  Serial.write("Parar");
+  Serial.write(5);
    //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
+  server.sendHeader("Location", String("/"), true);
+  server.send ( 302, "text/plain", "");
+}
+
+void lento() {
+  Serial.write(6); 
+  //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
+  server.sendHeader("Location", String("/"), true);
+  server.send ( 302, "text/plain", "");
+}
+
+void rapido() {
+  Serial.write(7); 
+  //PARA REDIRECCIONAR A LA PAGINA PRINCIPAL LUEGO DE APRETAR CADA BOTON
   server.sendHeader("Location", String("/"), true);
   server.send ( 302, "text/plain", "");
 }

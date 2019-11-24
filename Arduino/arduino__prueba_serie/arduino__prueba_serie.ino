@@ -9,8 +9,8 @@ Servo servoRight;         // Define servo derecho
 void setup()
 {
  //Para Motores
- servoRight.attach(9);  // Asigna servo derecho al digital pin 9
- servoLeft.attach(10);  // Asigna servo izquierdo al digital pin 10
+ servoRight.attach(11);  // Asigna servo derecho al digital pin 9
+ servoLeft.attach(12);  // Asigna servo izquierdo al digital pin 10
  stopRobot();
  
  //Para Serial
@@ -21,76 +21,86 @@ void setup()
  }
  
 void loop(){
- String IncomingString=""; //string que viene de la ESP8266
- boolean StringReady = false; //para ver si esta listo el string
+ int orden=""; //int que viene de la ESP8266
+ boolean Ready = false; //para ver si esta listo para recibir otra orden
  
  while (mySerial.available()){ //mientras el serie este disponible
-   IncomingString=mySerial.readString(); //leo un string
-   StringReady= true; //aviso que ya esta listo el string
+   orden=mySerial.read(); //leo una orden
+   Ready= true; //aviso que ya esta lista la orden
   }
  
-  if (StringReady){ //si el string esta listo
-    Serial.println("Comando recibido: " + IncomingString); //lo imprimo
+  if (Ready){ //si la orden esta lista
+    Serial.println("Comando recibido: " + orden); //lo imprimo
   }
-  
-  if (IncomingString == "Adelante"){ //si el string esta listo
-    Serial.println("Moviendo hacia adelante \n");
-    forward();
-    //delay(2000);
+
+  switch (orden){ //depende la orden hago una cosa u otra
+    case 1:
+      forward();
+    break;
+
+    case 2:
+      reverse();
+    break;
+
+    case 3:
+       turnLeft();
+    break;
+
+    case 4:
+     turnRight();
+    break;
+
+    case 5:
+      stopRobot();
+    break;
+
+    case 6:
+      lento();
+    break;
+
+    case 7:
+      rapido();
+    break;
   }
-  
-   if (IncomingString == "Atras"){ //si el string esta listo
-    Serial.println("Moviendo hacia atras \n");
-    reverse();
-    //delay(2000);
-  }
-  
-   if (IncomingString == "Izquierda"){ //si el string esta listo
-    Serial.println("Doblare a la izquierda \n");
-    turnLeft();
-    //delay(2000);
-  }
-  
-   if (IncomingString == "Derecha"){ //si el string esta listo
-    Serial.println("Doblare a la derecha \n");
-    turnRight();
-    //delay(2000);
-  }
-  
-   if (IncomingString == "Parar"){ //si el string esta listo
-    Serial.println("Para el auto \n");
-    stopRobot();
-    //delay(2000);
-  }
- }
+}
 
 
 
  // Rutinas para adelante, atras, izquierda, derecha y parar.  
 void forward() {
-  servoLeft.write(180);
-  servoRight.write(0);
+  servoLeft.write(110);
+  servoRight.write(66);
 }
 
 void reverse() {
-  servoLeft.write(0);
-  servoRight.write(180);
+  servoLeft.write(66);
+  servoRight.write(110);
 }
 
 void turnRight() {
   servoLeft.write(180);
-  servoRight.write(75);
-  delay(2000);
+  servoRight.write(85);
+  delay(1500);
   forward();
 }
 void turnLeft() {
-  servoLeft.write(105);
+  servoLeft.write(95);
   servoRight.write(0);
-  delay(1000);
+  delay(1500);
   forward();
 }
 
 void stopRobot() {
   servoLeft.write(90);
-  servoRight.write(90);
+  servoRight.write(86);
+}
+
+void lento() {
+  servoLeft.write(100);
+  servoRight.write(73);
+}
+
+void rapido() {
+  servoLeft.write(180);
+  servoRight.write(0);
 }

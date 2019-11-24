@@ -89,6 +89,16 @@ def parar():
     requests.get('http://192.168.4.1/5')
     return render_template('index.html') 
 
+@app.route('/lento')
+def lento():
+    requests.get('http://192.168.4.1/6')
+    return render_template('index.html') 
+    
+@app.route('/rapido')
+def rapido():
+    requests.get('http://192.168.4.1/7')
+    return render_template('index.html') 
+
 if __name__ == "__main__":
     app.secret_key = "^A%DJAJU^JJ123"
     app.run(host='0.0.0.0', port=7000, debug=True)
