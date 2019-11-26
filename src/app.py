@@ -30,14 +30,14 @@ def login():
         user = curl.fetchone()
         curl.close()
 
-        if len(user) > 0:
+        if user:
             if password == user["password"]:
                 session['name'] = user['name']
                 return render_template("index.html")
             else:
-                return "Error password and email not match"
+                return render_template("login.html", error = "email o contraseña incorrectos")
         else:
-            return "Error user not found"
+            return render_template("login.html", error = "usuario no encontrado")
     else:
         return render_template("login.html")
 

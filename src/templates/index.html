@@ -84,21 +84,6 @@
 <!-- End Bootstrap Menu -->
 
 {% if not session['name'] %}
-<!-- Slider -->
-<section id="home">
-    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-			<div class="item active" style="background-image: url(images/slider/bg-1.jpg)"> <!-- Change Image -->
-				<div class="caption">
-					<h1 class="animated fadeInLeftBig">Bienvenido al <strong>AutoRobot360</strong></h1>
-						
-					</div>
-			</div>
-					
-        </div>    
-    </div>	
-</section>
-<!-- End Slider -->
 
 <section class="section-wrapper" id="about">
 	<div class="about-us">
@@ -106,9 +91,11 @@
 			<div class="container">	  
 				<div class="row">
 					<!-- Block Title -->
+					<br>
 					<div class="section-title wow fadeInUp" data-wow-duration="1s" data-wow-delay="300ms">			
-						<h1><span>Sobre AutoRobot360</span></h1>							
+							<h1 class="animated fadeInLeftBig">Bienvenido al <strong>AutoRobot360</strong></h1>							
 					</div>
+					<br><br><br><br><br><br>
 					<div class="element-title wow fadeInDown" data-wow-duration="1s" data-wow-delay="300ms">			
 						
 					</div>
@@ -145,33 +132,34 @@
 <br>
 	<div class="container">
 		<div class="row">
+				
+				<form action="/adelante" method="GET" >
+					<button id="adelante" type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-up fa-3x"></i></button>
+				</form>
+				<br>
 			
-				<form action="/adelante" method="GET">
-					<button type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-up fa-3x"></i></button>
+				<form action="/izquierda" method="GET" class = "col-xs-6">
+					<button id="izquierda" type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-left fa-3x"></i></button>
 				</form>
-				<br>
+				<form action="/derecha" method="GET" class = "col-xs-6">
+					<button id="derecha" type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-right fa-3x"></i></button>
+				</form>
+
+				<br><br><br><br>
 				<form action="/atras" method="GET">
-					<button type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-down fa-3x"></i></button>
-				</form>
-				<br>
-				<form action="/izquierda" method="GET">
-					<button type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-left fa-3x"></i></button>
-				</form>
-				<br>
-				<form action="/derecha" method="GET">
-					<button type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-right fa-3x"></i></button>
+					<button id="atras" type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-down fa-3x"></i></button>
 				</form>
 				<br>
 				<form action="/parar" method="GET">
-					<button type="submit" class="btn-danger"><i class="fa fa-stop-circle fa-3x"></i></button>
+					<button id="parar" type="submit" class="btn-danger"><i class="fa fa-stop-circle fa-3x"></i></button>
 				</form>
 				<br><br><br>
 				
 				<form action="/rapido" method="GET">
-					<button type="submit" class="btn-success">Ultra Velocidad<br><i class="fa fa-angle-double-up fa-3x"></i></button>
+					<button id="rapido" type="submit" class="btn-success">ULTRA VELOCIDAD<br><i class="fa fa-angle-double-up fa-3x"></i></button>
 				</form>
 				<br><br><br>
-						
+			</div>
 			
 		</div>
 	</div>
@@ -209,6 +197,10 @@
 	<script src="/static/js/jquery.knob.min.js"></script>	
 	<script src="/static/js/jquery.validate.min.js"></script>
 	<script src="/static/js/custom.js"></script>
+	<script src="/static/js/manejo_flechas.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 
   
 
 </body>

@@ -44,8 +44,7 @@
                 <div class="col-md-4 col-md-offset-4 col-xs-12">
                     <div class="form-group">
                         <label for="nombre">Nombre de Usuario</label>
-                        <input type="text" class="form-control" id="username" name="name" aria-describedby="usernameHelp" placeholder="Ingrese su nombre de usuario" required/>                
-                        <small id="nombreHelp" class="form-text text-muted">Aquí debe ingresar su nombre de usuario.</small>
+                        <input type="text" class="form-control" id="username" name="name" aria-describedby="usernameHelp" placeholder="Ingrese su nombre de usuario" required/>
                     </div>
                 </div>
             </div>
@@ -54,10 +53,12 @@
                     <div class="form-group">
                         <label for="nombre">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" placeholder="Ingrese su contraseña" required/>                
-                        <small id="apellidoHelp" class="form-text text-muted">Aquí debe ingresar su contraseña.</small>
                     </div>
                 </div>
-            </div>      
+            </div>
+            {% if error %}
+                <p class=error><strong>Error:</strong> {{ error }}
+            {% endif %}  
             <br>       
             <div class="row justify-content-md-center">  
                 <div class="col-md-2 col-md-offset-5 col-xs-12"> 
